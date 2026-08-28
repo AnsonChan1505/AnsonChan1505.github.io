@@ -223,6 +223,27 @@ h2 {
 
 @media (max-width: 700px) {
 
+    .hero-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.hero-photo-wrapper {
+    justify-content: flex-start;
+}
+
+.hero-photo {
+    max-width: 100%;
+}
+
+.hero-copy {
+    order: 1;
+}
+
+.hero-photo-wrapper {
+    order: 2;
+}
+
     .about,
 .research {
     grid-template-columns: 1fr;
