@@ -218,7 +218,72 @@ h2 {
 .project-card a:hover {
     opacity: 0.5;
 }
+/* Skills */
 
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.skill-card {
+    min-height: 520px;
+    padding: 40px 45px 45px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.skill-card:nth-child(odd) {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding-right: 55px;
+}
+
+.skill-card:nth-child(even) {
+    padding-left: 55px;
+}
+
+.skill-number {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    margin: 0 0 60px;
+    opacity: 0.55;
+}
+
+.skill-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(32px, 3vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin: 0 0 22px;
+    max-width: 500px;
+}
+
+.skill-summary {
+    font-size: 20px;
+    line-height: 1.4;
+    max-width: 500px;
+    margin-bottom: 35px;
+}
+
+.skill-description,
+.skill-example {
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 520px;
+}
+
+.skill-example {
+    margin-top: 22px;
+}
+
+.skill-tools {
+    margin-top: 35px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    opacity: 0.65;
+}
 /* Mobile */
 
 @media (max-width: 700px) {
@@ -244,7 +309,7 @@ h2 {
     order: 2;
 }
 
-    .about,
+    .skills,
 .research {
     grid-template-columns: 1fr;
     padding: 80px 6%;
