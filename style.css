@@ -197,6 +197,31 @@ h2 {
 
 @media (max-width: 700px) {
 
+    .about,
+.research {
+    grid-template-columns: 1fr;
+    padding: 80px 6%;
+}
+
+.section-number {
+    margin-bottom: 20px;
+}
+
+.project-grid {
+    grid-template-columns: 1fr;
+}
+
+.project-card,
+.project-card:nth-child(odd),
+.project-card:nth-child(even) {
+    padding: 35px 0;
+    border-right: none;
+}
+
+.project-category {
+    margin-bottom: 40px;
+}
+
     nav {
         padding: 22px 6%;
     }
