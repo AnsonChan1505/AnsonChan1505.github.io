@@ -88,6 +88,32 @@ h1 {
     letter-spacing: 0.12em;
 }
 
+.hero-main {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: 70px;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-copy {
+    min-width: 0;
+}
+
+.hero-photo-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hero-photo {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+}
+
 /* General Sections */
 
 .about,
