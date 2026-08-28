@@ -116,7 +116,7 @@ h1 {
 
 /* General Sections */
 
-.about,
+.skills,
 .research {
     padding: 120px 5%;
     display: grid;
@@ -283,10 +283,34 @@ h2 {
     letter-spacing: 0.1em;
     line-height: 1.8;
     opacity: 0.65;
+
+    .skills-grid {
+    grid-template-columns: 1fr;
+}
+
+.skill-card,
+.skill-card:nth-child(odd),
+.skill-card:nth-child(even),
+.skill-card:last-child {
+    grid-column: auto;
+    padding: 35px 0;
+    border-right: none;
+    min-height: auto;
+}
+
+.skill-number {
+    margin-bottom: 35px;
+}
+
+.skill-summary {
+    font-size: 18px;
+}
 }
 /* Mobile */
 
 @media (max-width: 700px) {
+
+    
 
     .hero-main {
     grid-template-columns: 1fr;
@@ -313,6 +337,8 @@ h2 {
 .research {
     grid-template-columns: 1fr;
     padding: 80px 6%;
+
+    
 }
 
 .section-number {
