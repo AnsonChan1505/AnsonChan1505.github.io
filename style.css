@@ -24,7 +24,7 @@ nav {
 }
 
 .logo {
-    font-size: 18px;
+    font-size: 30px;
     font-weight: 600;
 }
 
@@ -54,7 +54,7 @@ nav {
 }
 
 .eyebrow {
-    font-size: 14px;
+    font-size: 22px;
     text-transform: uppercase;
     letter-spacing: 0.15em;
 }
@@ -77,7 +77,7 @@ h1 {
 
 .intro {
     max-width: 620px;
-    font-size: clamp(20px, 2vw, 30px);
+    font-size: clamp(16px, 1.5vw, 22px);
     line-height: 1.35;
     margin: 0;
 }
