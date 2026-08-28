@@ -88,6 +88,111 @@ h1 {
     letter-spacing: 0.12em;
 }
 
+/* General Sections */
+
+.about,
+.research {
+    padding: 120px 5%;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.section-number {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.section-content {
+    max-width: 1200px;
+}
+
+.section-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(48px, 7vw, 100px);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    font-weight: 400;
+    max-width: 900px;
+    margin: 0 0 60px;
+}
+
+
+/* About */
+
+.about-text {
+    max-width: 760px;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.45;
+}
+
+
+/* Research */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.project-card {
+    min-height: 380px;
+    padding: 35px 35px 35px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.project-card:nth-child(odd) {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding-right: 50px;
+}
+
+.project-card:nth-child(even) {
+    padding-left: 50px;
+}
+
+.project-category {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+    margin-bottom: 70px;
+}
+
+.project-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(32px, 3vw, 48px);
+    line-height: 1;
+    margin: 0 0 25px;
+}
+
+.project-card > p:not(.project-category) {
+    max-width: 470px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 25px;
+    color: #171717;
+    text-decoration: none;
+    border-bottom: 1px solid #171717;
+    padding-bottom: 3px;
+}
+
+.project-card a:hover {
+    opacity: 0.5;
+}
+
 /* Mobile */
 
 @media (max-width: 700px) {
