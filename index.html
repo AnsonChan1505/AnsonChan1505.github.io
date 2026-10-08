@@ -397,7 +397,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <h2>Who I am.</h2>
       </div>
       <div class="about-body">
-        <p>I am a final year student in the Bachelor of International Economics at the Vancouver School of Economics, University of British Columbia, graduating in May 2027. My training includes graduate level microeconomic theory and econometrics, advanced macroeconomics, mathematics, and real analysis.</p>
+        <p>I am a final year student in the Bachelor of International Economics at the Vancouver School of Economics, University of British Columbia, graduating in May 2027. My training includes graduate level microeconomic theory, advanced econometrics, honours macroeconomics, real analysis, and mathematical statistics.</p>
         <p>Alongside my studies I have worked as a research assistant, an economic consulting intern, and an editor, and I co-founded a student society for economic theory and philosophy.</p>
       </div>
     </div>
@@ -437,7 +437,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <aside class="skill-panel panel-cream">
             <span class="skill-no" aria-hidden="true">02</span>
             <p class="panel-label">Example</p>
-            <p>I lead the UBC Economic theory and Philosophy Society, previously served as VP Finance of VSEUS, and have worked in case-based teams at Analysis Group and KPMG.</p>
+            <p>I lead the UBC Economic theory and Philosophy Society (EPS), previously served as VP Finance of VSEUS, and have worked in case-based teams at Analysis Group and KPMG.</p>
           </aside>
         </article>
 
@@ -476,7 +476,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <aside class="skill-panel panel-navy">
             <span class="skill-no" aria-hidden="true">05</span>
             <p class="panel-label">Example</p>
-            <p>I co-founded the UBC Economic theory and Philosophy Society, helping develop its strategy, team, programming, partnerships, and organizational structure.</p>
+            <p>I co-founded the UBC Economic theory and Philosophy Society (EPS), helping develop its strategy, team, programming, partnerships, and organizational structure.</p>
           </aside>
         </article>
       </div>
@@ -620,14 +620,14 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
 
       <div class="lead-grid on-dark">
         <article class="lead-card lead-card--maroon">
-          <h3>UBC Economic theory and Philosophy Society</h3>
+          <h3>UBC Economic theory and Philosophy Society (EPS)</h3>
           <p class="lead-role">Co-founder and Co-President, spring 2026 to present</p>
           <p>I co-founded the society with Anthea Ho, and we serve as Co-Presidents. It brings students together around economic theory and philosophy through discussions, experiments, podcasts, game nights, and mentorship on economic consulting.</p>
-          <a class="btn btn-ghost" href="https://epsubc.com" target="_blank" rel="noopener">Visit epsubc.com</a>
+          <a class="btn btn-ghost" href="https://epsubc.wixsite.com/home" target="_blank" rel="noopener">Visit the EPS website</a>
         </article>
 
         <article class="lead-card lead-card--navy">
-          <h3>Vancouver School of Economics Undergraduate Society</h3>
+          <h3>Vancouver School of Economics Undergraduate Society (VSEUS)</h3>
           <p class="lead-role">VP Finance, April 2025 to April 2026</p>
           <p>I began as the BIE Representative and Partnerships Director, then served as VP Finance. I built monthly budget reporting, supported 11 corporate partnerships and four student initiatives, and helped revive the Economics Gazette. Over two years I helped organize about 12 events, including a case competition, Industry Night with roughly 30 professionals, a graduate school information session with academics from Harvard and MIT, and Econ Visions.</p>
           <a class="btn btn-ghost" href="https://vseus.ca" target="_blank" rel="noopener">Visit vseus.ca</a>
@@ -645,7 +645,9 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <p>I am glad to talk about economics, data, and research.</p>
       </div>
       <div class="contact-links" id="contact-links">
-        <a class="btn btn-ghost" id="contact-github" href="https://github.com/ansonchan1505" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-cream" href="mailto:ansonchan1505@gmail.com" aria-label="Email ansonchan1505@gmail.com">Gmail</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/ansonwschan" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/ansonchan_hkkkk/" target="_blank" rel="noopener" aria-label="Instagram, @ansonchan_hkkkk">Instagram</a>
       </div>
     </div>
   </section>
@@ -672,8 +674,9 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <h2>Connect</h2>
         <ul>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="https://github.com/ansonchan1505" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://epsubc.com" target="_blank" rel="noopener">UBC Economic theory and Philosophy Society</a></li>
+          <li><a href="https://www.linkedin.com/in/ansonwschan" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/ansonchan_hkkkk/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://epsubc.wixsite.com/home" target="_blank" rel="noopener">UBC Economic theory and Philosophy Society (EPS)</a></li>
         </ul>
       </div>
     </div>
@@ -685,30 +688,8 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
 </footer>
 
 <script>
-/* ------------------------------------------------------------
-   Contact details: fill these in. Empty values stay hidden.
-   ------------------------------------------------------------ */
-const CONTACT = {
-  email: "",     // for example "name@example.com"
-  linkedin: ""   // full address, for example "https://www.linkedin.com/in/your-name"
-};
-
 (function () {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Contact buttons */
-  const slot = document.getElementById('contact-links');
-  const github = document.getElementById('contact-github');
-  function addContact(label, href, cls, external) {
-    const a = document.createElement('a');
-    a.className = 'btn ' + cls;
-    a.href = href;
-    a.textContent = label;
-    if (external) { a.target = '_blank'; a.rel = 'noopener'; }
-    slot.insertBefore(a, github);
-  }
-  if (CONTACT.email) addContact('Email me', 'mailto:' + CONTACT.email, 'btn-cream', false);
-  if (CONTACT.linkedin) addContact('LinkedIn', CONTACT.linkedin, 'btn-ghost', true);
 
   /* Footer year */
   document.getElementById('year').textContent = new Date().getFullYear();
