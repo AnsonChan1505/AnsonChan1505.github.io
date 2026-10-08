@@ -1,412 +1,772 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anson Chan | Economics Student at UBC</title>
+<meta name="description" content="Anson Chan is a final year economics student at the University of British Columbia with experience in economic research, consulting, and student leadership.">
+<meta name="theme-color" content="#bdb1a1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231d304e'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-size='26' font-weight='700' text-anchor='middle' fill='%23e5e2db'%3EAC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-    <meta charset="UTF-8">
+<style>
+/* ------------------------------------------------------------
+   Design tokens
+   ------------------------------------------------------------ */
+:root{
+  --sand:#bdb1a1;     /* main page colour */
+  --navy:#1d304e;
+  --maroon:#511c1c;
+  --taupe:#ae9f8c;
+  --cream:#e5e2db;
+  --crimson:#832539;
+  --bronze:#9f7d4e;
+  --black:#000000;
+  --rule:rgba(29,48,78,.26);
+  --font:'Playfair Display',Georgia,'Times New Roman',serif;
+}
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--sand);color:var(--navy);
+  font-family:var(--font);font-size:1.125rem;line-height:1.7;
+  font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+h1,h2,h3,p,ul,ol{margin-top:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--crimson);outline-offset:3px;border-radius:4px}
+.on-dark :focus-visible{outline-color:var(--cream)}
 
-    <title>Anson Chan</title>
+.wrap{width:min(1180px,100% - 3rem);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:100;background:var(--navy);color:var(--cream);padding:.6rem 1rem;border-radius:6px;text-decoration:none}
+.skip:focus{top:1rem}
 
-    <link rel="stylesheet" href="style.css">
+/* ------------------------------------------------------------
+   Buttons and chips
+   ------------------------------------------------------------ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.85rem 1.75rem;border-radius:999px;border:2px solid transparent;
+  font:inherit;font-weight:600;font-size:1rem;line-height:1.2;text-decoration:none;cursor:pointer;
+  transition:background-color .2s,color .2s,border-color .2s;
+}
+.btn-solid{background:var(--crimson);color:var(--cream)}
+.btn-solid:hover{background:var(--navy)}
+.btn-line{border-color:var(--navy);color:var(--navy);background:transparent}
+.btn-line:hover{background:var(--navy);color:var(--cream)}
+.btn-cream{background:var(--cream);color:var(--navy)}
+.btn-cream:hover{background:var(--taupe)}
+.btn-ghost{border-color:var(--cream);color:var(--cream);background:transparent}
+.btn-ghost:hover{background:var(--cream);color:var(--navy)}
 
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0;padding:0}
+.chips li{
+  border:1px solid var(--line,rgba(29,48,78,.4));border-radius:999px;
+  padding:.15rem .85rem;font-size:.95rem;font-weight:500;line-height:1.6;
+}
+
+/* ------------------------------------------------------------
+   Header
+   ------------------------------------------------------------ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(189,177,161,.94);
+  -webkit-backdrop-filter:saturate(1.2) blur(10px);backdrop-filter:saturate(1.2) blur(10px);
+  border-bottom:1px solid var(--rule);transition:box-shadow .25s;
+}
+.site-header.scrolled{box-shadow:0 8px 24px -16px rgba(29,48,78,.6)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1.5rem}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;font-weight:700;font-size:1.25rem;color:var(--navy)}
+.brand-mark{
+  display:grid;place-items:center;width:42px;height:42px;border-radius:50%;
+  background:var(--navy);color:var(--cream);font-size:1rem;font-weight:700;
+}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0}
+.nav-links a{position:relative;display:inline-block;text-decoration:none;font-weight:500;font-size:1rem;padding:.4rem 0;color:var(--navy)}
+.nav-links a:not(.pill)::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--crimson);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s;
+}
+.nav-links a:not(.pill):hover::after,.nav-links a.active:not(.pill)::after{transform:scaleX(1)}
+.nav-links a.pill{background:var(--crimson);color:var(--cream);padding:.55rem 1.3rem;border-radius:999px;transition:background-color .2s}
+.nav-links a.pill:hover{background:var(--navy)}
+.nav-toggle{display:none;background:none;border:0;padding:.6rem;margin-right:-.6rem;cursor:pointer;color:var(--navy)}
+.nav-toggle span{display:block;width:26px;height:2px;background:currentColor;margin:6px 0;transition:transform .25s,opacity .25s}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* ------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------ */
+.hero{padding:clamp(2.5rem,6vw,5rem) 0 0}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(2rem,5vw,5rem);align-items:center;
+}
+.kicker{display:flex;align-items:center;gap:.9rem;font-style:italic;font-weight:600;font-size:1.4rem;line-height:1.4;color:var(--maroon);margin:0 0 1.5rem}
+.kicker::before{content:"";flex:none;width:48px;height:2px;background:var(--bronze)}
+.hero h1{
+  font-size:clamp(4.25rem,11.5vw,9.5rem);line-height:.9;font-weight:800;letter-spacing:-.02em;
+  margin:0 0 1.5rem;color:var(--black);
+}
+.hero h1 span{display:block}
+.hero-lede{max-width:34rem;margin:0 0 2rem;font-size:1.25rem;line-height:1.6}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.9rem}
+
+.portrait{position:relative;justify-self:end;width:min(100%,430px);margin-right:18px}
+.portrait::before{
+  content:"";position:absolute;inset:18px -18px -18px 18px;
+  border:2px solid var(--bronze);border-radius:999px 999px 0 0;
+}
+.portrait-frame{
+  position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:999px 999px 0 0;
+  background:var(--navy);color:var(--cream);display:grid;place-items:center;
+}
+.portrait-frame .mono{font-size:5.5rem;font-weight:700;opacity:.35}
+.portrait-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  margin-top:clamp(3rem,6vw,5rem);border-top:1px solid var(--rule);
+}
+.stat{padding:1.75rem 1.5rem 2.25rem 0}
+.stat+.stat{padding-left:1.5rem;border-left:1px solid var(--rule)}
+.stat-num{display:block;color:var(--black);font-size:clamp(2.5rem,5vw,3.75rem);font-weight:700;line-height:1;font-variant-numeric:lining-nums tabular-nums}
+.stat-label{margin:.6rem 0 0;font-size:1rem;line-height:1.4;color:var(--maroon)}
+
+/* ------------------------------------------------------------
+   Marquee
+   ------------------------------------------------------------ */
+.marquee{background:var(--navy);color:var(--cream);padding:1.5rem 0 1.7rem;overflow:hidden}
+.marquee-title{text-align:center;font-style:italic;font-size:1rem;color:var(--taupe);margin:0 0 1rem}
+.marquee-track{display:flex;width:max-content;animation:drift 55s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-list{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+.marquee-list li{display:flex;align-items:center;font-style:italic;font-size:clamp(1.25rem,2.4vw,1.75rem);white-space:nowrap}
+.marquee-list li::after{content:"";width:9px;height:9px;margin:0 2.25rem;background:var(--bronze);transform:rotate(45deg)}
+@keyframes drift{to{transform:translateX(-50%)}}
+
+/* ------------------------------------------------------------
+   Sections
+   ------------------------------------------------------------ */
+.section{padding:clamp(4rem,9vw,7.5rem) 0}
+.section--taupe{background:var(--taupe)}
+.section--cream{background:var(--cream)}
+.section-head{max-width:44rem;margin-bottom:clamp(2.25rem,5vw,3.75rem)}
+.eyebrow{display:flex;align-items:center;gap:.8rem;font-style:italic;font-weight:600;font-size:1.1rem;color:var(--maroon);margin:0 0 .75rem}
+.eyebrow::before{content:"";flex:none;width:36px;height:2px;background:var(--bronze)}
+h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter-spacing:-.01em;margin:0 0 1rem;color:var(--black)}
+.section-intro{max-width:36rem;margin:0}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+.about-grid .section-head{margin-bottom:0}
+.about-body p{max-width:40rem}
+
+/* Skills */
+.skill{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(1.5rem,4vw,4rem);align-items:center;
+  padding:clamp(2rem,4vw,3rem) 0;border-top:1px solid var(--rule);
+}
+.skills-list>.skill:nth-child(even) .skill-text{order:2}
+.skill-text h3{font-size:clamp(1.75rem,3vw,2.4rem);line-height:1.15;font-weight:700;margin:0 0 .6rem}
+.skill-tag{font-style:italic;font-size:1.2rem;line-height:1.45;color:var(--maroon);margin:0 0 1rem}
+.skill-text p:last-child{margin-bottom:0;max-width:34rem}
+.skill-panel{
+  position:relative;overflow:hidden;border-radius:14px;padding:2.25rem;
+  display:flex;flex-direction:column;gap:1rem;justify-content:center;min-height:15rem;
+}
+.skill-panel p{margin:0;font-size:1.05rem;line-height:1.65}
+.panel-label{font-style:italic;font-weight:600;font-size:1rem!important}
+.skill-no{position:absolute;top:.2rem;right:1.4rem;font-size:5.5rem;font-style:italic;line-height:1;opacity:.2;pointer-events:none}
+.panel-navy{background:var(--navy);color:var(--cream);--line:rgba(229,226,219,.45)}
+.panel-maroon{background:var(--maroon);color:var(--cream);--line:rgba(229,226,219,.45)}
+.panel-crimson{background:var(--crimson);color:var(--cream);--line:rgba(229,226,219,.5)}
+.panel-cream{background:var(--cream);color:var(--navy);--line:rgba(29,48,78,.4);box-shadow:inset 0 5px 0 var(--bronze)}
+
+/* Projects */
+.project{background:var(--cream);color:var(--navy);border-radius:14px;padding:2rem 2rem 2.25rem;border-top:5px solid var(--bronze)}
+.project h3{font-size:clamp(1.4rem,2.2vw,1.75rem);line-height:1.2;font-weight:700;margin:0 0 .75rem}
+.project-field{font-style:italic;font-weight:600;font-size:1rem;color:var(--maroon);margin:0 0 .6rem}
+.project p{margin:0 0 1rem;font-size:1.05rem;line-height:1.65}
+.project-meta{font-style:italic;color:var(--maroon)}
+.project .chips{margin-top:1.25rem}
+.project--feature{
+  background:var(--navy);color:var(--cream);border-top-color:var(--bronze);
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.5rem,4vw,4rem);
+  padding:clamp(2rem,4vw,3.25rem);margin-bottom:1.5rem;--line:rgba(229,226,219,.45);
+}
+.project--feature h3{font-size:clamp(1.75rem,3.2vw,2.6rem);line-height:1.15}
+.project--feature .project-field,.project--feature .project-meta{color:var(--taupe)}
+.project--feature p{font-size:1.1rem}
+.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+
+/* Experience */
+.ledger{list-style:none;margin:0;padding:0}
+.ledger-row{display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(1rem,4vw,3.5rem);padding:2rem 0;border-top:1px solid var(--rule)}
+.ledger-row:last-child{border-bottom:1px solid var(--rule)}
+.ledger-date{font-style:italic;font-weight:500;color:var(--maroon);margin:.3rem 0 0;line-height:1.45}
+.ledger-row h3{font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.25;font-weight:700;margin:0 0 .15rem}
+.ledger-org{font-style:italic;margin:0 0 .75rem;color:var(--maroon)}
+.ledger-row p:last-child{margin-bottom:0;max-width:44rem}
+
+/* Leadership */
+.lead-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+.lead-card{
+  border-radius:14px;padding:clamp(2rem,4vw,3rem);color:var(--cream);
+  border-top:5px solid var(--bronze);display:flex;flex-direction:column;align-items:flex-start;
+}
+.lead-card--maroon{background:var(--maroon)}
+.lead-card--navy{background:var(--navy)}
+.lead-card h3{font-size:clamp(1.6rem,2.8vw,2.2rem);line-height:1.2;font-weight:700;margin:0 0 .4rem}
+.lead-role{font-style:italic;color:var(--taupe);margin:0 0 1.25rem}
+.lead-card p:not(.lead-role){margin:0 0 1.75rem}
+.lead-card .btn{margin-top:auto}
+
+/* Contact */
+.contact{background:var(--maroon);color:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.contact .eyebrow{color:var(--cream)}
+.contact h2{color:var(--cream)}
+.contact p{max-width:34rem;margin:0}
+.contact-links{display:flex;flex-wrap:wrap;gap:.9rem}
+
+/* Footer */
+.site-footer{background:var(--black);color:var(--cream);padding:4rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(229,226,219,.22)}
+.site-footer h2{font-size:1.2rem;font-weight:700;letter-spacing:0;margin:0 0 1rem;line-height:1.3;color:var(--cream)}
+.site-footer p{margin:0;max-width:26rem;color:var(--taupe);font-size:1rem;line-height:1.65}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.site-footer li a{text-decoration:none;font-size:1rem}
+.site-footer li a:hover{text-decoration:underline;text-decoration-color:var(--bronze);text-underline-offset:5px;text-decoration-thickness:2px}
+.footer-base{padding-top:1.5rem;font-size:.95rem;color:var(--taupe);display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+@media (max-width:920px){
+  .nav-toggle{display:block}
+  .nav-links{
+    display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--sand);padding:.75rem 1.5rem 1.5rem;border-bottom:1px solid var(--rule);
+  }
+  .nav-links.open{display:flex}
+  .nav-links li{border-top:1px solid var(--rule)}
+  .nav-links li:first-child{border-top:0}
+  .nav-links a{padding:.9rem 0;width:100%}
+  .nav-links a.pill{margin-top:.75rem;width:auto;text-align:center}
+  .nav-links li:last-child{border-top:0}
+
+  .hero-grid,.about-grid,.skill,.project--feature,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .portrait{justify-self:center;width:min(86%,380px);margin:1rem auto 0;margin-right:auto}
+  .skills-list>.skill:nth-child(even) .skill-text{order:0}
+  .project-grid,.lead-grid{grid-template-columns:minmax(0,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>div:first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+  body{font-size:1.0625rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{padding:1.25rem 1rem 1.5rem 0}
+  .stat+.stat{padding-left:0;border-left:0}
+  .stat:nth-child(even){padding-left:1rem;border-left:1px solid var(--rule)}
+  .stat:nth-child(n+3){border-top:1px solid var(--rule)}
+  .ledger-row{grid-template-columns:minmax(0,1fr);gap:.25rem}
+  .ledger-date{margin:0}
+  .skill-panel,.project{padding:1.75rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important}
+  .marquee-track{animation:none;width:auto;justify-content:center}
+  .marquee-list{flex-wrap:wrap;justify-content:center;row-gap:.6rem}
+  .marquee-list[aria-hidden="true"]{display:none}
+}
+</style>
 </head>
 
-
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Anson Chan, back to top">
+      <span class="brand-mark" aria-hidden="true">AC</span>
+      <span>Anson Chan</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a class="pill" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-<nav>
+<main id="main">
 
-    <div class="logo">
-        Anson Chan
-    </div>
-
-    <div class="nav-links">
-
-        <a href="#research">Skills</a>
-
-        <a href="#research">Research</a>
-
-        <a href="#experience">Experience</a>
-
-        <a href="#contact">Contact</a>
-
-    </div>
-
-</nav>
-
-
-<main>
-
-
-<section class="hero">
-
-    <div class="hero-main">
-
-        <div class="hero-copy">
-
-            <p class="eyebrow">
-                Economics · Data · Research
-            </p>
-
-            <h1>
-                Anson<br>
-                Chan
-            </h1>
-
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">Economics · Data · Research</p>
+          <h1><span>Anson</span><span>Chan</span></h1>
+          <p class="hero-lede">I am an economics student interested in economic theory, empirical research, and applying economics to real-world questions.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#research">View research</a>
+            <a class="btn btn-line" href="#contact">Get in touch</a>
+          </div>
         </div>
-
-
-        <div class="hero-photo-wrapper">
-
-            <img
-                src="Full Smile.jpg"
-                alt="Portrait of Anson Chan"
-                class="hero-photo"
-            >
-
+        <div class="portrait">
+          <div class="portrait-frame">
+            <span class="mono" aria-hidden="true">AC</span>
+            <img src="portrait.jpg" alt="Portrait of Anson Chan" fetchpriority="high" data-fallbacks="Full%20Smile.jpg|https://ansonchan1505.github.io/Full%20Smile.jpg" onerror="var f=(this.dataset.fallbacks||'').split('|').filter(Boolean);if(f.length){this.src=f.shift();this.dataset.fallbacks=f.join('|');}else{this.remove();}">
+          </div>
         </div>
+      </div>
 
-    </div>
-
-
-    <div class="hero-bottom">
-
-        <p class="intro">
-            I am an economics student interested in economic theory,
-            empirical research, and applying economics to real-world questions.
-        </p>
-
-        <p class="scroll">
-            Scroll to explore ↓
-        </p>
-
-    </div>
-
-</section>
-<section class="skills" id="skills">
-
-    <div class="section-number">
-        01
-    </div>
-
-    <div class="section-content">
-
-        <p class="section-label">
-            Capabilities
-        </p>
-
-        <h2>
-            How I work.
-        </h2>
-
-        <div class="skills-grid">
-
-
-            <article class="skill-card">
-
-                <p class="skill-number">01</p>
-
-                <h3>
-                    Quantitative Analysis
-                </h3>
-
-                <p class="skill-summary">
-                    Turning complex data into decision-relevant economic insight.
-                </p>
-
-                <p class="skill-description">
-                    I use Stata, R, Python, and Excel for data cleaning,
-                    econometric analysis, visualization, and programmatic
-                    data collection.
-                </p>
-
-                <p class="skill-example">
-                    <strong>Example:</strong> At Analysis Group, I collected
-                    product-review data programmatically using APIs and cleaned
-                    and analyzed survey data to produce summary statistics and
-                    exhibits in Excel.
-                </p>
-
-                <p class="skill-tools">
-                    Stata · R · Python · Excel · Econometrics · APIs
-                </p>
-
-            </article>
-
-
-            <article class="skill-card">
-
-                <p class="skill-number">02</p>
-
-                <h3>
-                    Teamwork & Leadership
-                </h3>
-
-                <p class="skill-summary">
-                    Making teams more organized, collaborative, and effective.
-                </p>
-
-                <p class="skill-description">
-                    I focus on communicating clearly, organizing information,
-                    taking ownership of deliverables, and helping teams move
-                    toward a shared goal.
-                </p>
-
-                <p class="skill-example">
-                    <strong>Example:</strong> I lead the UBC Economic theory
-                    and Philosophy Society, previously served as VP Finance of
-                    VSEUS, and have worked in case-based teams at Analysis Group
-                    and KPMG.
-                </p>
-
-            </article>
-
-
-            <article class="skill-card">
-
-                <p class="skill-number">03</p>
-
-                <h3>
-                    AI-Augmented Workflows
-                </h3>
-
-                <p class="skill-summary">
-                    Using AI to increase analytical leverage without replacing judgment.
-                </p>
-
-                <p class="skill-description">
-                    I integrate AI into research, coding, information synthesis,
-                    and drafting workflows while independently verifying outputs
-                    and maintaining analytical judgment.
-                </p>
-
-                <p class="skill-example">
-                    <strong>Example:</strong> I use AI tools to iterate more
-                    quickly on code, explore unfamiliar topics, structure complex
-                    information, and improve analytical and written deliverables.
-                </p>
-
-            </article>
-
-
-            <article class="skill-card">
-
-                <p class="skill-number">04</p>
-
-                <h3>
-                    Qualitative Analysis & Communication
-                </h3>
-
-                <p class="skill-summary">
-                    Turning complex information into clear arguments.
-                </p>
-
-                <p class="skill-description">
-                    I synthesize technical, legal, economic, and industry
-                    information into concise and decision-relevant conclusions
-                    for technical and non-technical audiences.
-                </p>
-
-                <p class="skill-example">
-                    <strong>Example:</strong> Across consulting and research
-                    projects, I have translated quantitative and qualitative
-                    findings into presentations, reports, exhibits, and
-                    recommendations.
-                </p>
-
-            </article>
-
-
-            <article class="skill-card">
-
-                <p class="skill-number">05</p>
-
-                <h3>
-                    Entrepreneurial Thinking
-                </h3>
-
-                <p class="skill-summary">
-                    Turning loosely defined ideas into things that exist.
-                </p>
-
-                <p class="skill-description">
-                    I enjoy identifying opportunities, developing new initiatives,
-                    and building the teams and systems needed to execute them.
-                </p>
-
-                <p class="skill-example">
-                    <strong>Example:</strong> I co-founded the UBC Economic
-                    theory and Philosophy Society, helping develop its strategy,
-                    team, programming, partnerships, and organizational structure.
-                </p>
-
-            </article>
-
-
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-num"><span data-count="729">729</span></span>
+          <p class="stat-label">Vector autoregression models estimated for a Bank of Canada competition</p>
         </div>
-
-    </div>
-
-</section>
-
-
-<section class="research" id="research">
-
-    <div class="section-number">
-        02
-    </div>
-
-    <div class="section-content">
-
-        <p class="section-label">
-            Selected Projects
-        </p>
-
-        <h2>
-            Economics in practice.
-        </h2>
-
-
-        <div class="project-grid">
-
-            <article class="project-card">
-
-                <p class="project-category">
-                    Applied Microeconomics · Political Economy
-                </p>
-            
-                <h3>
-                    Undergraduate Thesis
-                </h3>
-            
-                <p>
-                    <strong>
-                        From Markets to Minds: Tertiarization, Trust,
-                        and US Immigration Sentiment in 2016
-                    </strong>
-                </p>
-            
-                <p>
-                    Studying how psychological and local economic factors
-                    interact in shaping attitudes toward immigration, with a
-                    particular focus on the shift toward service-sector employment.
-                </p>
-            
-                <a href="#">
-                    Explore thesis →
-                </a>
-            
-            </article>
-
-
-            <article class="project-card">
-
-                <p class="project-category">
-                    Macroeconomics · Monetary Policy
-                </p>
-
-                <h3>
-                    Bank of Canada Governor's Challenge
-                </h3>
-
-                <p>
-                    In a team of 5, represented UBC to analyze the Canadian
-                    economy and contributed to a data-driven monetary policy 
-                    recommendation presented to the Bank of Canada.
-                </p>
-
-                <a href="#">
-                    Explore project →
-                </a>
-
-            </article>
-
-
-            <article class="project-card">
-
-                <p class="project-category">
-                    International Trade · Global Value Chains
-                </p>
-
-                <h3>
-                    National Trade Statistics Biases Research
-                </h3>
-
-                <p>
-                    Worked as a Research Assistant for Professor Ken Kikkawa
-                    and Dr. Rudolfs Bems from the International Monetary Fund (IMF)
-                    on an empirical research project examining global value
-                    chains and international production using large-scale
-                    economic and firm-level data.
-                </p>
-
-                <a href="#">
-                    Explore project →
-                </a>
-
-            </article>
-
-
-            <article class="project-card">
-
-                <p class="project-category">
-                    Start-Up Consulting · Entry Analysis
-                </p>
-
-                <h3>
-                    Forestry AI Consulting Project
-                </h3>
-
-                <p>
-                    Worked with 180 Degrees Consulting on a strategy project
-                    for Forestry AI, contributing economic analysis and
-                    sentiment analysis to support client recommendations.
-                </p>
-
-                <a href="#">
-                    Explore project →
-                </a>
-
-            </article>
-
-
-            <article class="project-card">
-
-                <p class="project-category">
-                    Applied Microconomics · Labour Economics
-                </p>
-
-                <h3>
-                    Household Consumption Paper
-                </h3>
-
-                <p>
-                    Worked for Dr. Giovanni Gallipoli and PhD Candidate Mila 
-                    Markevych to research examining household consumption
-                    patterns using economic data and quantitative analysis.
-                </p>
-
-                <a href="#">
-                    Explore project →
-                </a>
-
-            </article>
-
-
+        <div class="stat">
+          <span class="stat-num"><span class="sr">about </span><span aria-hidden="true">~</span><span data-count="150">150</span></span>
+          <p class="stat-label">Countries in the production network data I worked with</p>
         </div>
-
+        <div class="stat">
+          <span class="stat-num"><span class="sr">about </span><span aria-hidden="true">~</span><span data-count="300">300</span></span>
+          <p class="stat-label">Pages in a LaTeX research report</p>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span class="sr">about </span><span aria-hidden="true">~</span><span data-count="12">12</span></span>
+          <p class="stat-label">Events organized for economics students</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-</section>
+  <!-- Marquee -->
+  <div class="marquee on-dark" style="margin-top:clamp(2rem,4vw,3rem)">
+    <p class="marquee-title">Where I have studied, researched, and consulted</p>
+    <div class="marquee-track">
+      <ul class="marquee-list">
+        <li>University of British Columbia</li>
+        <li>Analysis Group</li>
+        <li>KPMG</li>
+        <li>UBC Sauder School of Business</li>
+        <li>Bank of Canada Governor's Challenge</li>
+        <li>180 Degrees Consulting</li>
+        <li>Iona Journal of Economics</li>
+      </ul>
+      <ul class="marquee-list" aria-hidden="true">
+        <li>University of British Columbia</li>
+        <li>Analysis Group</li>
+        <li>KPMG</li>
+        <li>UBC Sauder School of Business</li>
+        <li>Bank of Canada Governor's Challenge</li>
+        <li>180 Degrees Consulting</li>
+        <li>Iona Journal of Economics</li>
+      </ul>
+    </div>
+  </div>
 
+  <!-- About -->
+  <section class="section section--cream" id="about">
+    <div class="wrap about-grid">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>Who I am.</h2>
+      </div>
+      <div class="about-body">
+        <p>I am a final year student in the Bachelor of International Economics at the Vancouver School of Economics, University of British Columbia, graduating in May 2027. My training includes graduate level microeconomic theory and econometrics, advanced macroeconomics, mathematics, and real analysis.</p>
+        <p>Alongside my studies I have worked as a research assistant, an economic consulting intern, and an editor, and I co-founded a student society for economic theory and philosophy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Capabilities</p>
+        <h2>How I work.</h2>
+      </div>
+
+      <div class="skills-list">
+        <article class="skill">
+          <div class="skill-text">
+            <h3>Quantitative Analysis</h3>
+            <p class="skill-tag">Turning complex data into decision-relevant economic insight.</p>
+            <p>I use Stata, R, Python, and Excel for data cleaning, econometric analysis, visualization, and programmatic data collection.</p>
+          </div>
+          <aside class="skill-panel panel-navy">
+            <span class="skill-no" aria-hidden="true">01</span>
+            <p class="panel-label">Example</p>
+            <p>At Analysis Group, I collected product-review data programmatically using APIs and cleaned and analyzed survey data to produce summary statistics and exhibits in Excel.</p>
+            <ul class="chips">
+              <li>Stata</li><li>R</li><li>Python</li><li>Excel</li><li>Econometrics</li><li>APIs</li>
+            </ul>
+          </aside>
+        </article>
+
+        <article class="skill">
+          <div class="skill-text">
+            <h3>Teamwork &amp; Leadership</h3>
+            <p class="skill-tag">Making teams more organized, collaborative, and effective.</p>
+            <p>I focus on communicating clearly, organizing information, taking ownership of deliverables, and helping teams move toward a shared goal.</p>
+          </div>
+          <aside class="skill-panel panel-cream">
+            <span class="skill-no" aria-hidden="true">02</span>
+            <p class="panel-label">Example</p>
+            <p>I lead the UBC Economic theory and Philosophy Society, previously served as VP Finance of VSEUS, and have worked in case-based teams at Analysis Group and KPMG.</p>
+          </aside>
+        </article>
+
+        <article class="skill">
+          <div class="skill-text">
+            <h3>AI-Augmented Workflows</h3>
+            <p class="skill-tag">Using AI to increase analytical leverage without replacing judgment.</p>
+            <p>I integrate AI into research, coding, information synthesis, and drafting workflows while independently verifying outputs and maintaining analytical judgment.</p>
+          </div>
+          <aside class="skill-panel panel-maroon">
+            <span class="skill-no" aria-hidden="true">03</span>
+            <p class="panel-label">Example</p>
+            <p>I use AI tools to iterate more quickly on code, explore unfamiliar topics, structure complex information, and improve analytical and written deliverables.</p>
+          </aside>
+        </article>
+
+        <article class="skill">
+          <div class="skill-text">
+            <h3>Qualitative Analysis &amp; Communication</h3>
+            <p class="skill-tag">Turning complex information into clear arguments.</p>
+            <p>I synthesize technical, legal, economic, and industry information into concise and decision-relevant conclusions for technical and non-technical audiences.</p>
+          </div>
+          <aside class="skill-panel panel-cream">
+            <span class="skill-no" aria-hidden="true">04</span>
+            <p class="panel-label">Example</p>
+            <p>Across consulting and research projects, I have translated quantitative and qualitative findings into presentations, reports, exhibits, and recommendations.</p>
+          </aside>
+        </article>
+
+        <article class="skill">
+          <div class="skill-text">
+            <h3>Entrepreneurial Thinking</h3>
+            <p class="skill-tag">Turning loosely defined ideas into things that exist.</p>
+            <p>I enjoy identifying opportunities, developing new initiatives, and building the teams and systems needed to execute them.</p>
+          </div>
+          <aside class="skill-panel panel-navy">
+            <span class="skill-no" aria-hidden="true">05</span>
+            <p class="panel-label">Example</p>
+            <p>I co-founded the UBC Economic theory and Philosophy Society, helping develop its strategy, team, programming, partnerships, and organizational structure.</p>
+          </aside>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section class="section section--taupe" id="research">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Selected projects</p>
+        <h2>Economics in practice.</h2>
+      </div>
+
+      <article class="project project--feature on-dark">
+        <div>
+          <p class="project-field">Applied Microeconomics · Political Economy</p>
+          <h3>Undergraduate Thesis</h3>
+        </div>
+        <div>
+          <p><strong>From Markets to Minds: Tertiarization, Trust, and US Immigration Sentiment in 2016</strong></p>
+          <p>Studying how psychological and local economic factors interact in shaping attitudes toward immigration, with a particular focus on the shift toward service-sector employment.</p>
+          <ul class="chips">
+            <li>Survey weighted econometrics</li><li>Ordered logit</li><li>Partial proportional odds</li>
+          </ul>
+        </div>
+      </article>
+
+      <div class="project-grid">
+        <article class="project">
+          <p class="project-field">Macroeconomics · Monetary Policy</p>
+          <h3>Bank of Canada Governor's Challenge</h3>
+          <p class="project-meta">June to December 2024</p>
+          <p>In a team of 5, represented UBC to analyze the Canadian economy and contributed to a data-driven monetary policy recommendation presented to the Bank of Canada.</p>
+          <ul class="chips"><li>Structural VARs</li><li>Impulse responses</li><li>Inflation analysis</li></ul>
+        </article>
+
+        <article class="project">
+          <p class="project-field">International Trade · Global Value Chains</p>
+          <h3>National Trade Statistics Biases Research</h3>
+          <p class="project-meta">May to August 2024, and August 2025 to April 2026</p>
+          <p>Worked as a Research Assistant for Professor Ken Kikkawa and Dr. Rudolfs Bems from the International Monetary Fund (IMF) on an empirical research project examining global value chains and international production using large-scale economic and firm-level data.</p>
+          <ul class="chips"><li>Stata</li><li>MATLAB</li><li>R</li><li>LaTeX</li><li>Fixed effects</li></ul>
+        </article>
+
+        <article class="project">
+          <p class="project-field">Start-Up Consulting · Entry Analysis</p>
+          <h3>Forestry AI Consulting Project</h3>
+          <p class="project-meta">September 2024 to April 2025</p>
+          <p>Worked with 180 Degrees Consulting on a strategy project for Forestry AI, contributing economic analysis and sentiment analysis to support client recommendations.</p>
+          <ul class="chips"><li>Economic analysis</li><li>Sentiment analysis</li><li>Client recommendations</li></ul>
+        </article>
+
+        <article class="project">
+          <p class="project-field">Applied Microeconomics · Labour Economics</p>
+          <h3>Household Consumption Paper</h3>
+          <p class="project-meta">May 2023 to April 2024</p>
+          <p>Worked for Dr. Giovanni Gallipoli and PhD Candidate Mila Markevych on research examining household consumption patterns using economic data and quantitative analysis.</p>
+          <ul class="chips"><li>Stata</li><li>Panel methods</li><li>Fixed effects</li><li>Difference in differences</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section section--cream" id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Experience</p>
+        <h2>Where I have worked.</h2>
+      </div>
+
+      <ol class="ledger">
+        <li class="ledger-row">
+          <p class="ledger-date">September 2026 to present</p>
+          <div>
+            <h3>Research Assistant, Micro Theory and Applied Microeconomics</h3>
+            <p class="ledger-org">University of British Columbia</p>
+            <p>Working with Ying Gao on research in micro theory and applied microeconomics.</p>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <p class="ledger-date">May to August 2026</p>
+          <div>
+            <h3>Research Professional Intern</h3>
+            <p class="ledger-org">Analysis Group, Montreal</p>
+            <p>Collected product-review data programmatically using APIs and cleaned and analyzed survey data to produce summary statistics and exhibits in Excel. Built skills in price fixing analysis, consumer protection damages, counterfactual analysis, industrial organization, and applied econometrics.</p>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <p class="ledger-date">September 2025 to present</p>
+          <div>
+            <h3>Senior Editor</h3>
+            <p class="ledger-org">Iona Journal of Economics</p>
+            <p>Editorial work on economics research submitted to the journal.</p>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <p class="ledger-date">May to August 2024, then August 2025 to April 2026</p>
+          <div>
+            <h3>Research Assistant</h3>
+            <p class="ledger-org">UBC Sauder School of Business</p>
+            <p>Worked for Professor Ken Kikkawa and Dr. Rudolfs Bems from the International Monetary Fund on an empirical research project examining global value chains and international production. Worked in Stata, MATLAB, and R, and produced a research report of roughly 300 pages in LaTeX.</p>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <p class="ledger-date">May to August 2025</p>
+          <div>
+            <h3>International Trade and Customs Intern</h3>
+            <p class="ledger-org">KPMG</p>
+            <p>Worked on tariff classification, duty drawbacks, CBSA submissions, customs valuation, and trade issues facing multinational companies.</p>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <p class="ledger-date">September 2024 to April 2025</p>
+          <div>
+            <h3>Consultant</h3>
+            <p class="ledger-org">180 Degrees Consulting</p>
+            <p>Worked on a strategy project for Forestry AI, contributing economic analysis and sentiment analysis to support client recommendations.</p>
+          </div>
+        </li>
+        <li class="ledger-row">
+          <p class="ledger-date">May 2023 to April 2024</p>
+          <div>
+            <h3>Research Assistant</h3>
+            <p class="ledger-org">Vancouver School of Economics, UBC</p>
+            <p>Worked for Dr. Giovanni Gallipoli and PhD Candidate Mila Markevych on research examining household consumption patterns using economic data and quantitative analysis. Used Stata for panel methods, fixed effects, and difference in differences, and wrote literature reviews.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section class="section" id="leadership">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Leadership</p>
+        <h2>Building communities.</h2>
+      </div>
+
+      <div class="lead-grid on-dark">
+        <article class="lead-card lead-card--maroon">
+          <h3>UBC Economic theory and Philosophy Society</h3>
+          <p class="lead-role">Co-founder and Co-President, spring 2026 to present</p>
+          <p>I co-founded the society with Anthea Ho, and we serve as Co-Presidents. It brings students together around economic theory and philosophy through discussions, experiments, podcasts, game nights, and mentorship on economic consulting.</p>
+          <a class="btn btn-ghost" href="https://epsubc.com" target="_blank" rel="noopener">Visit epsubc.com</a>
+        </article>
+
+        <article class="lead-card lead-card--navy">
+          <h3>Vancouver School of Economics Undergraduate Society</h3>
+          <p class="lead-role">VP Finance, April 2025 to April 2026</p>
+          <p>I began as the BIE Representative and Partnerships Director, then served as VP Finance. I built monthly budget reporting, supported 11 corporate partnerships and four student initiatives, and helped revive the Economics Gazette. Over two years I helped organize about 12 events, including a case competition, Industry Night with roughly 30 professionals, a graduate school information session with academics from Harvard and MIT, and Econ Visions.</p>
+          <a class="btn btn-ghost" href="https://vseus.ca" target="_blank" rel="noopener">Visit vseus.ca</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact on-dark" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Get in touch.</h2>
+        <p>I am glad to talk about economics, data, and research.</p>
+      </div>
+      <div class="contact-links" id="contact-links">
+        <a class="btn btn-ghost" id="contact-github" href="https://github.com/ansonchan1505" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
 </main>
 
+<footer class="site-footer on-dark">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Anson Chan</h2>
+        <p>Economics student at the Vancouver School of Economics, University of British Columbia.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Connect</h2>
+        <ul>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://github.com/ansonchan1505" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://epsubc.com" target="_blank" rel="noopener">UBC Economic theory and Philosophy Society</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Anson Chan. All rights reserved.</span>
+      <span>University of British Columbia</span>
+    </div>
+  </div>
+</footer>
 
+<script>
+/* ------------------------------------------------------------
+   Contact details: fill these in. Empty values stay hidden.
+   ------------------------------------------------------------ */
+const CONTACT = {
+  email: "",     // for example "name@example.com"
+  linkedin: ""   // full address, for example "https://www.linkedin.com/in/your-name"
+};
+
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Contact buttons */
+  const slot = document.getElementById('contact-links');
+  const github = document.getElementById('contact-github');
+  function addContact(label, href, cls, external) {
+    const a = document.createElement('a');
+    a.className = 'btn ' + cls;
+    a.href = href;
+    a.textContent = label;
+    if (external) { a.target = '_blank'; a.rel = 'noopener'; }
+    slot.insertBefore(a, github);
+  }
+  if (CONTACT.email) addContact('Email me', 'mailto:' + CONTACT.email, 'btn-cream', false);
+  if (CONTACT.linkedin) addContact('LinkedIn', CONTACT.linkedin, 'btn-ghost', true);
+
+  /* Footer year */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Header shadow */
+  const header = document.querySelector('.site-header');
+  function onScroll() { header.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile menu */
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.getElementById('primary-nav');
+  function closeMenu() { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  toggle.addEventListener('click', function () {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  links.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  /* Current section in the navigation */
+  const navAnchors = Array.from(links.querySelectorAll('a[href^="#"]'));
+  if ('IntersectionObserver' in window) {
+    const spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('main section[id]').forEach(function (s) { spy.observe(s); });
+  }
+
+  /* Count up the figures once, when they first appear */
+  const counters = document.querySelectorAll('[data-count]');
+  function run(el) {
+    const target = Number(el.dataset.count);
+    const t0 = performance.now();
+    const duration = 1400;
+    function tick(now) {
+      const p = Math.min((now - t0) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    counters.forEach(function (el) { el.textContent = '0'; });
+    const io = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { run(entry.target); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
 </body>
-
 </html>
