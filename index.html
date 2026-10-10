@@ -235,6 +235,20 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
 .lead-card p:not(.lead-role){margin:0 0 1.75rem}
 .lead-card .btn{margin-top:auto}
 
+/* Photo Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;list-style:none;margin:0;padding:0}
+.gallery-item{margin:0}
+.gallery-frame{
+  position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:14px;
+  border-top:5px solid var(--bronze);background:var(--navy);color:var(--cream);
+  display:grid;place-items:center;
+}
+.gallery-item:nth-child(3n+2) .gallery-frame{background:var(--maroon)}
+.gallery-item:nth-child(3n) .gallery-frame{background:var(--cream);color:var(--navy)}
+.gallery-frame .mono{font-style:italic;font-size:1.05rem;font-weight:500;opacity:.6}
+.gallery-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gallery-item figcaption{margin:.75rem 0 0;font-style:italic;font-size:1rem;line-height:1.45;color:var(--maroon)}
+
 /* Contact */
 .contact{background:var(--maroon);color:var(--cream)}
 .contact-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,5vw,5rem);align-items:center}
@@ -256,6 +270,9 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
 /* ------------------------------------------------------------
    Responsive
    ------------------------------------------------------------ */
+@media (max-width:1080px){
+  .nav-links{gap:1.5rem}
+}
 @media (max-width:920px){
   .nav-toggle{display:block}
   .nav-links{
@@ -273,6 +290,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
   .portrait{justify-self:center;width:min(86%,380px);margin:1rem auto 0;margin-right:auto}
   .skills-list>.skill:nth-child(even) .skill-text{order:0}
   .project-grid,.lead-grid{grid-template-columns:minmax(0,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .footer-grid{grid-template-columns:1fr 1fr}
   .footer-grid>div:first-child{grid-column:1/-1}
 }
@@ -286,6 +304,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
   .ledger-row{grid-template-columns:minmax(0,1fr);gap:.25rem}
   .ledger-date{margin:0}
   .skill-panel,.project{padding:1.75rem}
+  .gallery-grid{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -315,6 +334,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
       <li><a href="#research">Research</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a class="pill" href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -327,9 +347,9 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <p class="kicker">Economics · Data · Research</p>
+          <p class="kicker">Economic Research · Data Analysis · Teamwork</p>
           <h1><span>Anson</span><span>Chan</span></h1>
-          <p class="hero-lede">Hello! Welcome to my website. I am a final-year Economics student at UBC and incoming economic consultant at Analysis Group. My interests span economic theory, empirical research, and applying data to real-world economic questions.</p>
+          <p class="hero-lede">Hello! Welcome to my website. I am a final-year Economics student at UBC and incoming economic consultant at Analysis Group. My interests span economic theory, empirical research, and applying data to answer real-world economic questions.</p>
           <div class="hero-actions">
             <a class="btn btn-solid" href="#research">View research</a>
             <a class="btn btn-line" href="#contact">Get in touch</a>
@@ -354,11 +374,11 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         </div>
         <div class="stat">
           <span class="stat-num"><span data-count="37">37</span></span>
-          <p class="stat-label">Members in the Economic theory and Philosophy Society by the 6th month after its conception</p>
+          <p class="stat-label">Members in the Economic theory and Philosophy Society, a student club I co-founded and co-lead</p>
         </div>
         <div class="stat">
           <span class="stat-num"><span data-count="17">17</span></span>
-          <p class="stat-label">Events led or organized for economics students</p>
+          <p class="stat-label">Events organized for economics students, including econometric training, investment workshops, and case compeitions</p>
         </div>
       </div>
     </div>
@@ -369,21 +389,21 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
     <p class="marquee-title">What I like to do</p>
     <div class="marquee-track">
       <ul class="marquee-list">
-        <li>Economic theory</li>
+        <li>Micro theory (and Economics in general!)</li>
         <li>Basketball</li>
         <li>Ping pong</li>
-        <li>Singing (cantopop karaoke)</li>
-        <li>Spending time with my family and friends</li>
-        <li>Analyzing random datasets</li>
+        <li>Singing (cantopop only haha)</li>
+        <li>Spending time with family and friends</li>
+        <li>Analyzing random datasets (e.g, NBA stats)</li>
         <li>Starting a new club??</li>
       </ul>
       <ul class="marquee-list" aria-hidden="true">
-        <li>Economic theory</li>
+        <li>Micro theory (and Economics in general!)</li>
         <li>Basketball</li>
         <li>Ping pong</li>
-        <li>Singing (cantopop karaoke)</li>
-        <li>Spending time with my family and friends</li>
-        <li>Analyzing random datasets</li>
+        <li>Singing (cantopop only haha)</li>
+        <li>Spending time with family and friends</li>
+        <li>Analyzing random datasets (e.g, NBA stats)</li>
         <li>Starting a new club??</li>
       </ul>
     </div>
@@ -397,8 +417,8 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <h2>Who I am.</h2>
       </div>
       <div class="about-body">
-        <p>I am a final year student in the Bachelor of International Economics at the Vancouver School of Economics, University of British Columbia, graduating in May 2027. My training includes graduate-level microeconomic theory, advanced econometrics, honours macroeconomics, real analysis, mathematical statistics, and corporate finance.</p>
-        <p>Alongside my studies I have worked as a research assistant, an economic consulting intern, and an editor, and I co-founded a student society for economic theory and philosophy.</p>
+        <p>I am a final-year student in the Bachelor of International Economics Program (Academic Track) at the University of British Columbia (UBC), graduating in May 2027. My training includes graduate-level microeconomic theory, advanced econometrics, honours macroeconomics, real analysis, mathematical statistics, and corporate finance.</p>
+        <p>Alongside my studies I have worked as a research assistant, an economic consulting intern, and a senior editor at an undergraudate journal (Iona). I co-founded the Economic theory and Philosophy Society, with the mission of cultivating an intellectually-driven community here at UBC.</p>
       </div>
     </div>
   </section>
@@ -437,7 +457,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <aside class="skill-panel panel-cream">
             <span class="skill-no" aria-hidden="true">02</span>
             <p class="panel-label">Example</p>
-            <p>I lead the UBC Economic theory and Philosophy Society (EPS), previously served as VP Finance of VSEUS, and have worked in case-based teams at Analysis Group and KPMG.</p>
+            <p>I co-lead the UBC Economic theory and Philosophy Society (EPS), previously served as VP Finance of VSEUS, and have worked in case-based teams at Analysis Group and KPMG. I love defining team goals, planning, and executing what's necessary to achieve such goals.</p>
           </aside>
         </article>
 
@@ -445,19 +465,19 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <div class="skill-text">
             <h3>AI-Augmented Workflows</h3>
             <p class="skill-tag">Using AI to increase analytical leverage without replacing judgment.</p>
-            <p>I integrate AI into research, coding, information synthesis, and drafting workflows while independently verifying outputs and maintaining analytical judgment.</p>
+            <p>I integrate AI into research, coding, information synthesis, and drafting workflows to improve working efficiency, while independently verifying outputs and maintaining analytical judgment.</p>
           </div>
           <aside class="skill-panel panel-maroon">
             <span class="skill-no" aria-hidden="true">03</span>
             <p class="panel-label">Example</p>
-            <p>I use AI tools to iterate more quickly on code, explore unfamiliar topics, structure complex information, and improve analytical and written deliverables.</p>
+            <p>I utilized Claude AI to help with data cleaning as a Research Assistant, saving much time for economic analysis. I also utilized Harvey AI to summarize documents when working at Analysis Group, while verfiying results and putting them into use.</p>
           </aside>
         </article>
 
         <article class="skill">
           <div class="skill-text">
             <h3>Qualitative Analysis &amp; Communication</h3>
-            <p class="skill-tag">Turning complex information into clear arguments.</p>
+            <p class="skill-tag">Turning a mountful of information into clear arguments.</p>
             <p>I synthesize technical, legal, economic, and industry information into concise and decision-relevant conclusions for technical and non-technical audiences.</p>
           </div>
           <aside class="skill-panel panel-cream">
@@ -476,7 +496,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <aside class="skill-panel panel-navy">
             <span class="skill-no" aria-hidden="true">05</span>
             <p class="panel-label">Example</p>
-            <p>I co-founded the UBC Economic theory and Philosophy Society (EPS), helping develop its strategy, team, programming, partnerships, and organizational structure.</p>
+            <p>I co-founded the UBC Economic theory and Philosophy Society (EPS), helping develop its strategy, programming, partnerships, and structure. In 6 months, we went from virtually just a concept to a 37-person group with 260 followers.</p>
           </aside>
         </article>
       </div>
@@ -500,7 +520,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <p><strong>From Markets to Minds: Tertiarization, Trust, and US Immigration Sentiment in 2016</strong></p>
           <p>Studying how psychological and local economic factors interact in shaping attitudes toward immigration, with a particular focus on the shift toward service-sector employment.</p>
           <ul class="chips">
-            <li>Survey weighted econometrics</li><li>Ordered logit</li><li>Partial proportional odds</li>
+            <li>Survey weighted econometrics</li><li>Ordered logit modelling</li><li>Quasi-causal effects</li>
           </ul>
         </div>
       </article>
@@ -526,8 +546,8 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <p class="project-field">Start-Up Consulting · Entry Analysis</p>
           <h3>Forestry AI Consulting Project</h3>
           <p class="project-meta">September 2024 to April 2025</p>
-          <p>Worked with 180 Degrees Consulting on a strategy project for Forestry AI, contributing economic analysis and sentiment analysis to support client recommendations.</p>
-          <ul class="chips"><li>Economic analysis</li><li>Sentiment analysis</li><li>Client recommendations</li></ul>
+          <p>Worked with 180 Degrees Consulting on a strategy project for Forestry AI, contributing economic analysis and sensitivity analysis to support client recommendations.</p>
+          <ul class="chips"><li>Economic analysis</li><li>Sensitivity analysis</li><li>Client recommendations</li></ul>
         </article>
 
         <article class="project">
@@ -551,18 +571,9 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
 
       <ol class="ledger">
         <li class="ledger-row">
-          <!-- Add the dates for this role in the line below, then move the row to its place in time order -->
-          <p class="ledger-date">&nbsp;</p>
-          <div>
-            <h3>Teaching Assistant</h3>
-            <p class="ledger-org">Vancouver School of Economics, UBC</p>
-            <p>Worked closely with Professor Emrul Hassan and led 10 tutorial sections teaching concepts in introductory macroeconomics.</p>
-          </div>
-        </li>
-        <li class="ledger-row">
           <p class="ledger-date">September 2026 to present</p>
           <div>
-            <h3>Research Assistant, Micro Theory and Applied Microeconomics</h3>
+            <h3>Research Assistant, Micro Theory </h3>
             <p class="ledger-org">University of British Columbia</p>
             <p>Working with Ying Gao on research in micro theory and applied microeconomics.</p>
           </div>
@@ -575,8 +586,16 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
             <p>Collected product-review data programmatically using APIs and cleaned and analyzed survey data to produce summary statistics and exhibits in Excel. Built skills in price fixing analysis, consumer protection damages, counterfactual analysis, industrial organization, and applied econometrics.</p>
           </div>
         </li>
+         <li class="ledger-row">
+          <p class="ledger-date">January to April 2026</p>
+          <div>
+            <h3>Teaching Assistant</h3>
+            <p class="ledger-org">Vancouver School of Economics, UBC</p>
+            <p>Worked closely with Professor Emrul Hassan and led 10 tutorial sections teaching concepts in introductory macroeconomics.</p>
+          </div>
+        </li>
         <li class="ledger-row">
-          <p class="ledger-date">September 2025 to present</p>
+          <p class="ledger-date">September 2025 to April 2026</p>
           <div>
             <h3>Senior Editor</h3>
             <p class="ledger-org">Iona Journal of Economics</p>
@@ -586,7 +605,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <li class="ledger-row">
           <p class="ledger-date">May to August 2024, then August 2025 to April 2026</p>
           <div>
-            <h3>Research Assistant</h3>
+            <h3>Research Assistant, Global Value Chain</h3>
             <p class="ledger-org">UBC Sauder School of Business</p>
             <p>Worked for Professor Ken Kikkawa and Dr. Rudolfs Bems from the International Monetary Fund on an empirical research project examining global value chains and international production. Worked in Stata, MATLAB, and R, and produced a research report of roughly 300 pages in LaTeX.</p>
           </div>
@@ -594,7 +613,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <li class="ledger-row">
           <p class="ledger-date">May to August 2025</p>
           <div>
-            <h3>International Trade and Customs Intern</h3>
+            <h3>Consultant Intern, International Trade and Customs</h3>
             <p class="ledger-org">KPMG</p>
             <p>Worked on tariff classification, duty drawbacks, CBSA submissions, customs valuation, and trade issues facing multinational companies.</p>
           </div>
@@ -602,15 +621,15 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <li class="ledger-row">
           <p class="ledger-date">September 2024 to April 2025</p>
           <div>
-            <h3>Consultant</h3>
+            <h3>Pro-Bono Consultant</h3>
             <p class="ledger-org">180 Degrees Consulting</p>
-            <p>Worked on a strategy project for Forestry AI, contributing economic analysis and sentiment analysis to support client recommendations.</p>
+            <p>Worked on a strategy project for Forestry AI, contributing economic analysis and sentiment analysis to support client recommendations. Our team was placed first in final presentation.</p>
           </div>
         </li>
         <li class="ledger-row">
           <p class="ledger-date">May 2023 to April 2024</p>
           <div>
-            <h3>Research Assistant</h3>
+            <h3>Research Assistant, Labour Economics</h3>
             <p class="ledger-org">Vancouver School of Economics, UBC</p>
             <p>Worked for Dr. Giovanni Gallipoli and PhD Candidate Mila Markevych on research examining household consumption patterns using economic data and quantitative analysis. Used Stata for panel methods, fixed effects, and difference in differences, and wrote literature reviews.</p>
           </div>
@@ -645,6 +664,75 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
     </div>
   </section>
 
+  <!-- Photo Gallery -->
+  <section class="section section--taupe" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Photo Gallery</p>
+        <h2>Moments along the way.</h2>
+      </div>
+
+      <!-- To add a photo: put the image next to index.html, set its src and alt, and edit the caption.
+           Until the file exists, the frame shows the placeholder text. -->
+      <ul class="gallery-grid">
+        <li>
+          <figure class="gallery-item">
+            <div class="gallery-frame">
+              <span class="mono" aria-hidden="true">Photo 1</span>
+              <img src="gallery-1.jpg" alt="Photo 1 description" loading="lazy" onerror="this.remove()">
+            </div>
+            <figcaption>Caption for photo 1</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="gallery-item">
+            <div class="gallery-frame">
+              <span class="mono" aria-hidden="true">Photo 2</span>
+              <img src="gallery-2.jpg" alt="Photo 2 description" loading="lazy" onerror="this.remove()">
+            </div>
+            <figcaption>Caption for photo 2</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="gallery-item">
+            <div class="gallery-frame">
+              <span class="mono" aria-hidden="true">Photo 3</span>
+              <img src="gallery-3.jpg" alt="Photo 3 description" loading="lazy" onerror="this.remove()">
+            </div>
+            <figcaption>Caption for photo 3</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="gallery-item">
+            <div class="gallery-frame">
+              <span class="mono" aria-hidden="true">Photo 4</span>
+              <img src="gallery-4.jpg" alt="Photo 4 description" loading="lazy" onerror="this.remove()">
+            </div>
+            <figcaption>Caption for photo 4</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="gallery-item">
+            <div class="gallery-frame">
+              <span class="mono" aria-hidden="true">Photo 5</span>
+              <img src="gallery-5.jpg" alt="Photo 5 description" loading="lazy" onerror="this.remove()">
+            </div>
+            <figcaption>Caption for photo 5</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="gallery-item">
+            <div class="gallery-frame">
+              <span class="mono" aria-hidden="true">Photo 6</span>
+              <img src="gallery-6.jpg" alt="Photo 6 description" loading="lazy" onerror="this.remove()">
+            </div>
+            <figcaption>Caption for photo 6</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section class="section contact on-dark" id="contact">
     <div class="wrap contact-grid">
@@ -656,7 +744,6 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
       <div class="contact-links" id="contact-links">
         <a class="btn btn-cream" href="mailto:ansonchan1505@gmail.com" aria-label="Email ansonchan1505@gmail.com">Gmail</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/ansonwschan" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-ghost" href="https://www.instagram.com/ansonchan_hkkkk/" target="_blank" rel="noopener" aria-label="Instagram, @ansonchan_hkkkk">Instagram</a>
       </div>
     </div>
   </section>
@@ -667,7 +754,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
     <div class="footer-grid">
       <div>
         <h2>Anson Chan</h2>
-        <p>Economics student at the Vancouver School of Economics, University of British Columbia.</p>
+        <p>Bachelor of International Economics student at the University of British Columbia.</p>
       </div>
       <div>
         <h2>Explore</h2>
@@ -677,6 +764,7 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
           <li><a href="#research">Research</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#gallery">Photo Gallery</a></li>
         </ul>
       </div>
       <div>
@@ -684,7 +772,6 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
         <ul>
           <li><a href="#contact">Contact</a></li>
           <li><a href="https://www.linkedin.com/in/ansonwschan" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/ansonchan_hkkkk/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://epsubc.wixsite.com/home" target="_blank" rel="noopener">UBC Economic theory and Philosophy Society (EPS)</a></li>
         </ul>
       </div>
