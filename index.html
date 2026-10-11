@@ -170,8 +170,10 @@ h2{font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;font-weight:700;letter
 .section-intro{max-width:36rem;margin:0}
 
 /* About */
-.about-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+.about-grid{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(2rem,4vw,3.5rem);row-gap:1rem;align-items:start}
 .about-grid .section-head{margin-bottom:0}
+.about-grid h2{margin-bottom:0}
+.about-body{font-size:.94em}
 .about-body p{max-width:40rem}
 
 /* Skills */
